@@ -94,13 +94,13 @@ def cross_analyze(evictions_filed, base_evictions_filed, weeks):
     :return: a compiled graph that also notes when the Texas supreme court put a temporary stay on evictions
     """
     plt.figure(figsize=(50, 10))
-    plt.plot(weeks, evictions_filed, label='2020')
-    plt.plot(weeks, base_evictions_filed, label='2015-2016')
-    plt.xlabel('Date')
-    plt.ylabel('Evictions filed')
-    plt.title('Evictions filed by the week')
+    plt.plot(weeks, evictions_filed, label = '2020')
+    plt.plot(weeks, base_evictions_filed, label = '2015-2016')
+    plt.xlabel('Date', fontsize = 25)
+    plt.ylabel('Evictions filed', fontsize = 25)
+    plt.title('Evictions filed by the week', fontsize = 40)
     plt.legend()
-    plt.annotate('Texas Supreme Court puta a temporary stay on eviction proceedings.', xy=('3/8/2020', 1511))
+    plt.annotate('Texas Supreme Court puts a temporary \n stay on eviction proceedings.', xy = ('3/8/2020', 1551), fontsize = 15)
     plt.show()
 
 
