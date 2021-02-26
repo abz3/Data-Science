@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 
 # Fetches data; souce: https://evictionlab.org/eviction-tracking/get-the-data/
 # IMPORTANT: Baseline data for this is 2015-2016
-evictiondata = pd.read_csv('Houston_evictions.csv')
+# IMPORTANT VIEWER NOTE: The following lines of code only works on my laptop because it's where the pathway is stored.
+# Change the following line to where the you download the file 
+evictiondata = pd.read_csv(r"C:\Users\alexz\OneDrive\Documents\College\Freshman year\Sidegigs\Houston_evictions.csv")
 
 # Gives quick preview
 evictiondata.head(3)
@@ -57,9 +59,10 @@ def graphify(evictions_per_week):
     plt.ylabel('Evictions filed')
     plt.title('Evictions filed by the week')
     plt.show()
+    return weeks, evictions_filed
 
 
-def graph_baseline(evictiondata):
+def graph_baseline(evictiondata, weeks):
     """
     Graphs the baseline eviction data of 2015-2016 in the same format
     :param evictiondata: csv file of evictions filed
@@ -81,9 +84,10 @@ def graph_baseline(evictiondata):
     plt.xlabel('Date')
     plt.ylabel('Evictions filed')
     plt.show()
+    return base_evictions_filed
 
 
-def cross_analyze(evictiondata):
+def cross_analyze(evictions_filed, base_evictions_filed, weeks):
     """
     Cross analyzes the baseline with 2020's eviction data. NOTE* Requires you to run the above functions
     :param evictiondata: csv file of eviction data
@@ -101,8 +105,10 @@ def cross_analyze(evictiondata):
 
 
 # Implementation
-print(total(evictiosndata))
+print(total(evictiondata))
 evictions_per_week = weekly(evictiondata)
-graphify(evictions_per_week)
-graph_baseline(evictiondata)
-cross_analyze(evictiondata)
+weeks = graphify(evictions_per_week)[0]
+evictions_filed = graphify(evictions_per_week)[1]
+base_evictions_filed = graph_baseline(evictiondata, weeks)
+cross_analyze(evictions_filed, base_evictions_filed, weeks)
+
